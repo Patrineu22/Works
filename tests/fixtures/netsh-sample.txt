@@ -1,0 +1,27 @@
+Interface name : Wi-Fi
+There are 3 networks currently visible.
+
+SSID 1 : TECNO Hotspot
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP
+    BSSID 1                 : 00:11:22:33:44:55
+         Signal             : 82%
+         Radio type         : 802.11n
+         Channel            : 6
+
+SSID 2 : MTN_4G
+    Network type            : Infrastructure
+    Authentication          : WPA2-Personal
+    Encryption              : CCMP
+    BSSID 1                 : 66:77:88:99:aa:bb
+         Signal             : 61%
+         Channel            : 11
+
+SSID 3 : iPhone_John
+    Network type            : Infrastructure
+    Authentication          : WPA3-Personal
+    Encryption              : CCMP
+    BSSID 1                 : aa:bb:cc:dd:ee:ff
+         Signal             : 44%
+         Channel            : 1

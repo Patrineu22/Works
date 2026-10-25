@@ -1,0 +1,37 @@
+{
+  "name": "freecode",
+  "version": "1.0.0",
+  "description": "FreeCode - sharp green keyless-free terminal AI coding agent. Agents: JIM, KAI, ALEX.",
+  "type": "module",
+  "bin": {
+    "freecode": "bin/freecode.mjs"
+  },
+  "main": "src/cli.mjs",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node bin/freecode.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "icons": "node scripts/gen-icons.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "assets/",
+    "install.ps1",
+    "install.sh",
+    "README.md"
+  ],
+  "keywords": [
+    "freecode",
+    "cli",
+    "ai",
+    "coding-agent",
+    "terminal",
+    "keyless",
+    "pentest",
+    "green"
+  ],
+  "license": "MIT"
+}

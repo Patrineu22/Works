@@ -1,0 +1,15 @@
+{
+  "name": "freecode-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "description": "FreeCode desktop shell - green #00FF88 on #0A0A0A",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs --port 4321",
+    "start": "node server.mjs --port 4321",
+    "icons": "node ../../scripts/gen-icons.mjs",
+    "tauri": "tauri",
+    "build": "tauri build"
+  },
+  "devDependencies": {}
+}

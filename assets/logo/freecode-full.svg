@@ -1,0 +1,9 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="320" fill="#0A0A0A"/>
+  <g transform="translate(20,40)">
+    <rect x="0" y="0" width="240" height="180" rx="35" fill="none" stroke="#00FF88" stroke-width="8"/>
+    <path d="M 50 50 L 105 100 L 50 150" fill="none" stroke="#00FF88" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="120" y="130" width="60" height="12" rx="3" fill="#00FF88"/>
+  </g>
+  <text x="300" y="170" font-family="JetBrains Mono, monospace" font-weight="800" font-size="95" fill="#00FF88">FREECODE</text>
+</svg>

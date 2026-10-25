@@ -1,0 +1,309 @@
+/* FreeCode desktop - #00FF88 on #0A0A0A. Mirrors tailwind.config.js. */
+:root {
+  --primary: #00ff88;
+  --primary-dim: #00b862;
+  --background: #0a0a0a;
+  --panel: #1a1a1a;
+  --border: #00ff88;
+  --active-border: #00ff88;
+  --text: #e8e8e8;
+  --muted: #7a7a7a;
+  --danger: #ff4d4d;
+  --warn: #ffc24d;
+  --radius: 14px;
+  --mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, 'SF Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 300px;
+  grid-template-rows: 44px minmax(0, 1fr) 26px;
+  grid-template-areas:
+    'header header header'
+    'sessions chat files'
+    'status status status';
+  height: 100vh;
+}
+
+/* header ------------------------------------------------------------------ */
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  background: var(--primary);
+  color: var(--background);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.header .spacer { flex: 1; }
+.header .pill {
+  background: rgba(10, 10, 10, 0.85);
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.header button {
+  background: var(--background);
+  color: var(--primary);
+  border: 1px solid var(--background);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.header button:hover { background: #000; }
+
+/* panes ------------------------------------------------------------------ */
+.pane {
+  overflow: auto;
+  padding: 10px;
+  background: var(--background);
+}
+.pane-title {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 4px 6px 8px;
+}
+.sessions { grid-area: sessions; border-right: 1px solid #1f1f1f; }
+.files { grid-area: files; border-left: 1px solid #1f1f1f; }
+.chat { grid-area: chat; display: flex; flex-direction: column; padding: 0; }
+
+/* agents + sessions ------------------------------------------------------ */
+.agent {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--muted);
+  padding: 6px 8px;
+  font: inherit;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+.agent:hover { border-color: #2a2a2a; color: var(--text); }
+.agent.active {
+  border-color: var(--active-border);
+  color: var(--primary);
+  background: rgba(0, 255, 136, 0.07);
+  font-weight: 700;
+}
+.agent small { display: block; color: var(--muted); font-weight: 400; font-size: 10px; }
+
+.session-item {
+  width: 100%;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text);
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 12px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.session-item.active { border-color: var(--active-border); }
+.session-item small { color: var(--muted); }
+
+/* messages --------------------------------------------------------------- */
+.messages { flex: 1; overflow: auto; padding: 16px; }
+.msg { margin-bottom: 16px; max-width: 900px; }
+.msg .who {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.msg.user .body {
+  border-left: 2px solid var(--primary-dim);
+  padding-left: 10px;
+  color: var(--text);
+}
+.msg.assistant .body {
+  background: var(--panel);
+  border: 1px solid #242424;
+  border-radius: var(--radius);
+  padding: 12px;
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+.msg.assistant .body code { color: var(--primary); }
+.msg.assistant .body pre {
+  background: #0d0d0d;
+  border: 1px solid #242424;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+}
+.msg .meta { color: var(--muted); font-size: 10px; margin-top: 6px; }
+.msg.system .body { color: var(--warn); font-size: 12px; }
+
+/* composer --------------------------------------------------------------- */
+.composer {
+  border-top: 1px solid #1f1f1f;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  background: var(--background);
+}
+.composer textarea {
+  resize: none;
+  height: 64px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 10px;
+  font: inherit;
+}
+.composer textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+.composer .send {
+  align-self: stretch;
+  min-width: 92px;
+  background: var(--primary);
+  color: var(--background);
+  border: none;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.composer .send:disabled { opacity: 0.45; cursor: default; }
+
+/* file tree -------------------------------------------------------------- */
+.tree { font-size: 12px; }
+.tree .row {
+  display: flex;
+  gap: 6px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tree .row:hover { background: var(--panel); }
+.tree .row.dir { color: var(--primary); }
+.tree .row .size { margin-left: auto; color: var(--muted); font-size: 10px; }
+
+/* status bar ------------------------------------------------------------- */
+.status {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 12px;
+  background: var(--primary);
+  color: var(--background);
+  font-size: 11px;
+  font-weight: 700;
+}
+.status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--background); }
+
+/* settings modal --------------------------------------------------------- */
+.modal[hidden] { display: none; }
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 20;
+}
+.modal .sheet {
+  width: min(920px, 100%);
+  max-height: 86vh;
+  overflow: auto;
+  background: #0f0f0f;
+  border: 1px solid var(--primary);
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.35), 0 24px 60px rgba(0, 0, 0, 0.7);
+}
+.modal .sheet header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #1f1f1f;
+}
+.modal .sheet header h2 { margin: 0; font-size: 14px; letter-spacing: 0.1em; color: var(--primary); }
+.tabs { display: flex; gap: 6px; padding: 12px 18px 0; }
+.tabs button {
+  background: transparent;
+  border: 1px solid #242424;
+  border-radius: 999px;
+  color: var(--muted);
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.tabs button.active { border-color: var(--primary); color: var(--primary); }
+.tab-panel { padding: 14px 18px 18px; }
+.tab-panel[hidden] { display: none; }
+.field { margin-bottom: 14px; }
+.field label { display: flex; justify-content: space-between; font-size: 11px; color: var(--primary); margin-bottom: 5px; letter-spacing: 0.08em; }
+.field label span { color: var(--muted); letter-spacing: 0; }
+.field textarea, .field input {
+  width: 100%;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.field textarea { min-height: 86px; resize: vertical; }
+.field textarea:focus, .field input:focus { outline: none; border-color: var(--primary); }
+.actions { display: flex; align-items: center; gap: 10px; padding-top: 4px; }
+.actions .save {
+  background: var(--primary);
+  color: var(--background);
+  border: none;
+  border-radius: 10px;
+  padding: 9px 18px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.actions .ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+.actions .msg { font-size: 12px; color: var(--primary); }
+.actions .msg.error { color: var(--danger); }
+.hint { color: var(--muted); font-size: 11px; line-height: 1.5; }
