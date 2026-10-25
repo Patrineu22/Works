@@ -14,3 +14,12 @@ dist/
 build/
 *.exe
 packages/desktop/src-tauri/target/
+
+# Python (bluescan/)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+bluescan/bluescan-audit.log

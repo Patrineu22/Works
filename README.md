@@ -341,6 +341,25 @@ packages/tui/             Go logo package
 tests/                    node:test suites + fixtures + mock server
 ```
 
+## More tools in this repository
+
+### Bluescan — Bluetooth recon & protocol auditor
+
+[`bluescan/`](bluescan/README.md) is a single-file, async Python CLI for auditing BLE
+devices: profile fingerprinting (`AUDIO_TARGET` / `PHONE_TARGET`), GATT attack-surface
+mapping, spec-correct AVRCP media-control injection, a scripted takeover/state-machine
+test and raw GATT fuzzing — with an authorisation gate and a JSONL audit log.
+
+```bash
+cd bluescan && pip install -r requirements.txt
+python bluescan.py scan --duration 10
+python bluescan.py profile 00:1A:7D:DA:71:13
+python bluescan.py simulate-takeover --mac 00:1A:7D:DA:71:13 --yes
+```
+
+See [bluescan/README.md](bluescan/README.md) for the protocol reference, audit scenarios
+and limitations (including why Classic AVRCP is not reachable over GATT).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

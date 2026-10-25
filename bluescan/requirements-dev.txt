@@ -1,0 +1,4 @@
+-r requirements.txt
+
+# Test-only
+pytest>=7.4
