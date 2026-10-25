@@ -1,0 +1,16 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Local secrets + runtime state (never commit API keys or audit logs)
+.freecode/config.json
+.freecode/audit-log.jsonl
+.freecode/sessions/
+.freecode/*.local.json
+
+# Build output
+dist/
+build/
+*.exe
+packages/desktop/src-tauri/target/

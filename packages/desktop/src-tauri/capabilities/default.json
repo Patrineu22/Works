@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "FreeCode desktop capabilities: core window only, no shell/file plugins.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}
